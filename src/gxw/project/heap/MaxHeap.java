@@ -33,7 +33,7 @@ public class MaxHeap<E> {
 		
 		E root = this.array[0];
 		swap(0, lastPosition);
-		this.array[lastPosition--] = null;
+		lastPosition--;
 		if(lastPosition > 0) 
 			trickleDown(0);
 		System.out.println(String.format("Removed %s. %s", root, this));
@@ -50,6 +50,16 @@ public class MaxHeap<E> {
 		}
 		
 		return sb.toString();
+	}
+	
+	public void printArray() {
+		StringBuffer sb = new StringBuffer("MaxHeap: ");
+		for(int i =0;i<=this.array.length-1; i++) {
+			sb.append(this.array[i]);
+			if(i != this.array.length-1)
+				sb.append(",");
+		}
+		System.out.println(sb.toString());
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -132,6 +142,7 @@ public class MaxHeap<E> {
 		heap.remove();
 		heap.remove();
 		heap.remove();
-		heap.remove();
+		System.out.println("After Heap Sort:");
+		heap.printArray();
 	}
 }
